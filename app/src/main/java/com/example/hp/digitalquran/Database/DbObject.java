@@ -1,4 +1,4 @@
-package com.example.hp.digitalquran;
+package com.example.hp.digitalquran.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

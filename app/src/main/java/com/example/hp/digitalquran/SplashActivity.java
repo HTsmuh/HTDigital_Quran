@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.hp.digitalquran.Fragments.MainActivity;
+
 public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 2000;
     @Override
@@ -17,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashActivity.this,Home.class);
+                Intent mainIntent = new Intent(SplashActivity.this,MainActivity.class);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
                 overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
