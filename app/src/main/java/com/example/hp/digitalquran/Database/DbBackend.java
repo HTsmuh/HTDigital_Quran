@@ -10,7 +10,7 @@ public class DbBackend extends DbObject {
         super(context);
     }
 
-    public String[] surah_names() {
+    public String[] surah_arabic() {
         String query = "Select * from Surah_Names";
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         ArrayList<String> surah_names_array = new ArrayList<String>();
@@ -43,16 +43,16 @@ public class DbBackend extends DbObject {
     public String[] surah_No() {
         String query = "Select * from Surah_Names";
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
-        ArrayList<String> surah_roman_array = new ArrayList<>();
+        ArrayList<String> surah_number_array = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
                 String no = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
-                surah_roman_array.add(no);
+                surah_number_array.add(no);
             } while (cursor.moveToNext());
         }
         cursor.close();
-        String[] surah_number = new String[surah_roman_array.size()];
-        surah_number = surah_roman_array.toArray(surah_number);
+        String[] surah_number = new String[surah_number_array.size()];
+        surah_number = surah_number_array.toArray(surah_number);
         return surah_number;
     }
     public SurahObject getSurahById(int surahId){
