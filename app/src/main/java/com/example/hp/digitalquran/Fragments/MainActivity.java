@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //TextView myTextView = (TextView) findViewById(R.id.text1);
-        //Typeface typeface=Typeface.createFromAsset(getAssets(), "fonts/PDMS_Saleem_QuranFont-signed.ttf");
+        //Typeface typeface=Typeface.createFromAsset(getAssets(), "fonts/pdms.ttf");
         //myTextView.setTypeface(typeface);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);

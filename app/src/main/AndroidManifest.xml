@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragments.MainActivity"></activity>
+        <activity android:name=".Fragments.MainActivity" />
+        <activity android:name=".Fragments.SingleRow"></activity>
     </application>
 
 </manifest>

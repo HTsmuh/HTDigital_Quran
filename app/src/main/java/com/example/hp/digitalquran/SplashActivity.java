@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.hp.digitalquran.Fragments.MainActivity;
+import com.example.hp.digitalquran.Fragments.SingleRow;
 
 public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 2000;
