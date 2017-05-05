@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class DbObject {
 
-    private static SurahNameDatabase dbHelper;
+    private static MySqliteDatabase dbHelper;
     public SQLiteDatabase db;
 
     public DbObject(Context context) {
-        dbHelper = new SurahNameDatabase(context);
+        dbHelper = new MySqliteDatabase(context);
         this.db = dbHelper.getReadableDatabase();
     }
 

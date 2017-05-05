@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.example.hp.digitalquran.Database.DbBackend;
 import com.example.hp.digitalquran.R;
 
 
@@ -14,7 +16,8 @@ import com.example.hp.digitalquran.R;
  * A simple {@link Fragment} subclass.
  */
 public class ParaFragment extends Fragment {
-
+    ListView itemList;
+    ParaNameAdapter listAdapter;
 
     public ParaFragment() {
         // Required empty public constructor
@@ -25,7 +28,22 @@ public class ParaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_para, container, false);
+        View myView=inflater.inflate(R.layout.fragment_para, container, false);
+
+        itemList = (ListView)myView.findViewById(R.id.listView);
+        DbBackend dbFragment=new DbBackend(getContext());
+
+        String[] para_numbers = dbFragment.para_No();
+        String[] para_names = dbFragment.para_arabic();
+        String[] para_roman_names = dbFragment.para_roman();
+
+        listAdapter = new ParaNameAdapter(getContext(),para_numbers,para_names,para_roman_names);
+
+        itemList.setAdapter(listAdapter);
+
+
+        return myView;
+
     }
 
 }

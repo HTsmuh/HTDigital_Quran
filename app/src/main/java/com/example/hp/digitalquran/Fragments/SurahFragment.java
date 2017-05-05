@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import com.example.hp.digitalquran.Database.DbBackend;
-import com.example.hp.digitalquran.Database.MyAdapter;
 import com.example.hp.digitalquran.R;
 
 
@@ -17,7 +16,7 @@ import com.example.hp.digitalquran.R;
  */
 public class SurahFragment extends Fragment {
     ListView itemList;
-    MyAdapter listAdapter;
+    SurahNameAdapter listAdapter;
     int[] typeimage={R.drawable.makki,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.madni,R.drawable.makki,R.drawable.makki,R.drawable.makki,R.drawable.makki};
     public SurahFragment() {
         // Required empty public constructor
@@ -35,7 +34,7 @@ public class SurahFragment extends Fragment {
         String[] surah_names = dbFragment.surah_arabic();
         String[] surah_roman_names = dbFragment.surah_roman();
 
-        listAdapter = new MyAdapter(getContext(),surah_numbers,surah_names,surah_roman_names,typeimage);
+        listAdapter = new SurahNameAdapter(getContext(),surah_numbers,surah_names,surah_roman_names,typeimage);
 
         itemList.setAdapter(listAdapter);
 

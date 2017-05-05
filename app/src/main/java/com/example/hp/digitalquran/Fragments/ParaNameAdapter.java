@@ -1,4 +1,4 @@
-package com.example.hp.digitalquran.Database;
+package com.example.hp.digitalquran.Fragments;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,26 +9,25 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.hp.digitalquran.R;
 
 /**
- * Created by HP on 5/3/2017.
+ * Created by HP on 5/5/2017.
  */
 
-public class MyAdapter extends ArrayAdapter<String> {
+public class ParaNameAdapter extends ArrayAdapter<String> {
     public Context context;
-    public String[] surah_no_array;
-    public String[] surah_arabic_array;
-    public String[] surah_roman_array;
-    public int[] surah_type_images;
+    public String[] para_no_array;
+    public String[] para_arabic_array;
+    public String[] para_roman_array;
 
-    public MyAdapter(Context context, String[] surah_no, String[] surah_arabic, String[] surah_roman,int[] surah_type) {
-        super(context, R.layout.single_row_activity,R.id.text1,surah_arabic);
+    public ParaNameAdapter(Context context, String[] para_no, String[] parah_arabic, String[] para_roman) {
+        super(context, R.layout.single_row_activity,R.id.text1,parah_arabic);
         this.context=context;
-        this.surah_no_array=surah_no;
-        this.surah_arabic_array=surah_arabic;
-        this.surah_roman_array=surah_roman;
-        this.surah_type_images=surah_type;
+        this.para_no_array=para_no;
+        this.para_arabic_array=parah_arabic;
+        this.para_roman_array=para_roman;
     }
     @NonNull
     @Override
@@ -39,10 +38,10 @@ public class MyAdapter extends ArrayAdapter<String> {
         TextView roman= (TextView) row.findViewById(R.id.text2);
         TextView number= (TextView) row.findViewById(R.id.text3);
         ImageView imagetype= (ImageView) row.findViewById(R.id.image1);
-        arabic.setText(surah_arabic_array[position]);
-        roman.setText(surah_roman_array[position]);
-        number.setText(surah_no_array[position]);
-        imagetype.setImageResource(surah_type_images[position]);
+        arabic.setText(para_arabic_array[position]);
+        roman.setText(para_roman_array[position]);
+        number.setText(para_no_array[position]);
+        imagetype.setImageResource(R.drawable.logo);
         return row;
     }
 }
