@@ -1,4 +1,4 @@
-package com.example.hp.digitalquran.Fragments;
+package com.example.hp.digitalquran.Adapter;
 
 /**
  * Created by HP on 5/4/2017.
@@ -6,6 +6,10 @@ package com.example.hp.digitalquran.Fragments;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.example.hp.digitalquran.Fragments.TranslationFragment;
+import com.example.hp.digitalquran.Fragments.ParaFragment;
+import com.example.hp.digitalquran.Fragments.SurahFragment;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
@@ -26,7 +30,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 SurahFragment surah = new SurahFragment();
                 return surah;
             case 2:
-                BookmarkFragment bookmark = new BookmarkFragment();
+                TranslationFragment bookmark = new TranslationFragment();
                 return bookmark;
             default:
                 return null;

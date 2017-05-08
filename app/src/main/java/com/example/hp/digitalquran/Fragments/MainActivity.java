@@ -1,6 +1,5 @@
 package com.example.hp.digitalquran.Fragments;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
+import com.example.hp.digitalquran.Adapter.PagerAdapter;
 import com.example.hp.digitalquran.R;
 
 
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("PARA"));
         tabLayout.addTab(tabLayout.newTab().setText("SURAH"));
-        tabLayout.addTab(tabLayout.newTab().setText("BOOKMARK"));
+        tabLayout.addTab(tabLayout.newTab().setText("TRANSLATION"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

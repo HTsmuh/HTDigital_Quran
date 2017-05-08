@@ -1,4 +1,4 @@
-package com.example.hp.digitalquran.Fragments;
+package com.example.hp.digitalquran.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
