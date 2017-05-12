@@ -28,6 +28,6 @@ public class SurahText extends AppCompatActivity {
 
         String[] text = db.Surah_Text(index);
 
-        quranText.setText(Arrays.toString(text).replaceAll("\\[|\\]", ""));
+        quranText.setText(Arrays.toString(text).replaceAll("\\[|\\]",""));
     }
 }
