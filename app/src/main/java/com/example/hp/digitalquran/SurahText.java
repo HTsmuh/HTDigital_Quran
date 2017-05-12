@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.hp.digitalquran.Database.DbBackend;
@@ -27,7 +28,10 @@ public class SurahText extends AppCompatActivity {
         DbBackend db=new DbBackend(SurahText.this);
 
         String[] text = db.Surah_Text(index);
+        String text2 = Arrays.toString(text).replaceAll(",","﴾﴿");
+        String finalize = text2.replaceAll("\\[","");
+        String finalize2 = finalize.replaceAll("\\]","﴾");
 
-        quranText.setText(Arrays.toString(text).replaceAll("\\[|\\]",""));
+        quranText.setText(finalize2);
     }
 }
