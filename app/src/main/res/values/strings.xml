@@ -14,4 +14,9 @@
         <item>Large</item>
         <item>Very large</item>
     </string-array>
+    <string-array name="text_script">
+        <item>Select Script</item>
+        <item>Me Quran</item>
+        <item>PDMS Saleem</item>
+    </string-array>
 </resources>

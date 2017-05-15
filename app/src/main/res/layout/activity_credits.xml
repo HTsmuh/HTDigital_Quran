@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tanzil is a Quranic project launched in early 2007 to produce a highly verified Unicode Quran text to be used in Quranic websites and applications. Our mission in the Tanzil project is to produce a standard Unicode Quran text and serve as a reliable source for this standard text on the web."
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:padding="10dp"
                 android:textColor="@color/colorPrimaryDark"/>
         </LinearLayout>

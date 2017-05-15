@@ -25,6 +25,9 @@ public class SurahText extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_surah_text);
+        SettingActivity settingActivity=new SettingActivity();
+        int textsize=settingActivity.Finalsize;
+
         RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.activity_surah_text);
         Resources res = getResources();
         Drawable portrait = res.getDrawable(R.drawable.portrait);

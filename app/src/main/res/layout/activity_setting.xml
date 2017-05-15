@@ -11,13 +11,14 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="50dp"
             android:text="Text size :"
             android:textSize="20sp"
             android:padding="10dp"
             android:textColor="@color/colorPrimaryDark"/>
     <Spinner
+        android:id="@+id/text_size"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:padding="10dp"
@@ -29,7 +30,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="50dp"
             android:text="Colour :"
             android:textSize="20sp"
@@ -38,14 +39,16 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:entries="@array/text_script"
             android:padding="10dp"/>
-    </LinearLayout><LinearLayout
+    </LinearLayout>
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_marginTop="20dp">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="50dp"
         android:text="Script :"
         android:textSize="20sp"
@@ -54,6 +57,14 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:entries="@array/text_script"/>
 </LinearLayout>
+    <Button
+        android:id="@+id/setting_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Setting"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>
