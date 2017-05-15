@@ -4,7 +4,7 @@
     android:id="@+id/activity_surah_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/border"
+    android:background="@drawable/portrait"
     tools:context="com.example.hp.digitalquran.ParaText">
     <ScrollView
         android:layout_width="match_parent"
@@ -18,17 +18,18 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/bismillah"/>
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/quran_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
-            android:gravity="center_vertical"
-            android:minHeight="?android:attr/listPreferredItemHeightSmall" />
+            android:layout_marginTop="5dp"
+            android:src="@drawable/bismillah2"/>
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/quran_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:gravity="center_vertical"
+                android:minHeight="?android:attr/listPreferredItemHeightSmall" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
