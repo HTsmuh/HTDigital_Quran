@@ -18,10 +18,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".Fragments.MainActivity" />
-        <activity android:name=".SurahText"
-            android:theme="@style/SplashTheme"/>
-        <activity android:name=".ParaText"
-            android:theme="@style/SplashTheme"/>
+        <activity
+            android:name=".SurahText"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".ParaText"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".SettingActivity"
+            android:label="Settings"
+            android:theme="@style/MyAppTheme" />
+        <activity android:name=".AboutActivity"
+            android:label="About"
+            android:theme="@style/MyAppTheme"/>
+        <activity android:name=".CreditsActivity"
+            android:label="Credits"
+            android:theme="@style/MyAppTheme"/>
     </application>
 
 </manifest>

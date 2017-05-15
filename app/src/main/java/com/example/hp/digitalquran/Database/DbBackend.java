@@ -189,7 +189,7 @@ public class DbBackend extends DbObject {
         if (cursor.moveToFirst()) {
             do {
                 String text = cursor.getString(cursor.getColumnIndexOrThrow("text"));
-                String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_no"));
+                String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_PDMS"));
                 first.add(text);
                 second.add(num);
             } while (cursor.moveToNext());
@@ -213,7 +213,7 @@ public class DbBackend extends DbObject {
         if (cursor.moveToFirst()) {
             do {
                 String text = cursor.getString(cursor.getColumnIndexOrThrow("text"));
-                String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_no"));
+                String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_me_quran"));
                 first.add(text);
                 second.add(num);
             } while (cursor.moveToNext());

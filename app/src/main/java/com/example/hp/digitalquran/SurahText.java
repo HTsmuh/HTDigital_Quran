@@ -41,7 +41,7 @@ public class SurahText extends AppCompatActivity {
             relativeLayout.setBackgroundDrawable(portrait);
         }
         quranText= (TextView) findViewById(R.id.quran_text);
-        tf = Typeface.createFromAsset(getAssets(), "fonts/me_quran.ttf");
+        tf = Typeface.createFromAsset(getAssets(), "fonts/pdms.ttf");
         quranText.setTypeface(tf);
 
         bismillah= (ImageView) findViewById(R.id.bismillah);

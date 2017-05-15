@@ -24,7 +24,7 @@
                 android:id="@+id/quran_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ"
+                android:text="ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
                 android:textSize="15sp"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceListItemSmall"

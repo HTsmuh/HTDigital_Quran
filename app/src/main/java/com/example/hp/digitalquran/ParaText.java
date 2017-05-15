@@ -48,7 +48,7 @@ public class ParaText extends AppCompatActivity {
         int index = bundle.getInt("Para_Number");
         DbBackend db=new DbBackend(ParaText.this);
 
-        String[] text = db.Surah_Text(index);
+        String[] text = db.Para_Text(index);
         String finalize = Arrays.toString(text).replaceAll(",","");
         String finalize1 = finalize.replaceAll("\\[","");
         String finalize2 = finalize1.replaceAll("\\]","");

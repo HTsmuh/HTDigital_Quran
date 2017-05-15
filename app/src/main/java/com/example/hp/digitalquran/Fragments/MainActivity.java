@@ -1,5 +1,6 @@
 package com.example.hp.digitalquran.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,8 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.hp.digitalquran.AboutActivity;
 import com.example.hp.digitalquran.Adapter.PagerAdapter;
+import com.example.hp.digitalquran.CreditsActivity;
 import com.example.hp.digitalquran.R;
+import com.example.hp.digitalquran.SettingActivity;
+import com.example.hp.digitalquran.SurahText;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("PARA"));
         tabLayout.addTab(tabLayout.newTab().setText("SURAH"));
-        tabLayout.addTab(tabLayout.newTab().setText("TRANSLATION"));
+        tabLayout.addTab(tabLayout.newTab().setText("BOOKMARK"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -55,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_about, menu);
+        getMenuInflater().inflate(R.menu.menu_credits, menu);
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
         return true;
     }
 
@@ -63,7 +70,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.action_credit) {
+            Intent intent = new Intent(this, CreditsActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
