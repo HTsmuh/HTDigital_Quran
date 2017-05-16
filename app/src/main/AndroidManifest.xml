@@ -25,15 +25,17 @@
             android:name=".ParaText"
             android:theme="@style/SplashTheme" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".Menu.SettingActivity"
             android:label="Settings"
             android:theme="@style/MyAppTheme" />
-        <activity android:name=".AboutActivity"
+        <activity
+            android:name=".Menu.AboutActivity"
             android:label="About"
-            android:theme="@style/MyAppTheme"/>
-        <activity android:name=".CreditsActivity"
+            android:theme="@style/MyAppTheme" />
+        <activity
+            android:name=".Menu.CreditsActivity"
             android:label="Credits"
-            android:theme="@style/MyAppTheme"/>
+            android:theme="@style/MyAppTheme" />
     </application>
 
 </manifest>

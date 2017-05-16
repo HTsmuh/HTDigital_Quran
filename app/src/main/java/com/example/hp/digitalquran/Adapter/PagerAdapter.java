@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.hp.digitalquran.Fragments.BookmarkFragment;
-import com.example.hp.digitalquran.Fragments.TranslationFragment;
 import com.example.hp.digitalquran.Fragments.ParaFragment;
 import com.example.hp.digitalquran.Fragments.SurahFragment;
 

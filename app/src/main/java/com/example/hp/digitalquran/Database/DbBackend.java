@@ -150,8 +150,8 @@ public class DbBackend extends DbObject {
         ayat_number = ayat_number_array.toArray(ayat_number);
         return ayat_number;
     }
-    public String[] Ayat_Text() {
-        String query = "Select * from quran_text";
+    public String[] Ayat_Text(int index) {
+        String query = "Select * from quran_text where sura="+index;
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         ArrayList<String> ayat_text_array = new ArrayList<>();
         if (cursor.moveToFirst()) {
@@ -165,8 +165,8 @@ public class DbBackend extends DbObject {
         ayat_array = ayat_text_array.toArray(ayat_array);
         return ayat_array;
     }
-    public String[] Translation_Text() {
-        String query = "Select * from Translation_Ahmedali";
+    public String[] Translation_Text(int index) {
+        String query = "Select * from Translation_Ahmedali where sura="+index;
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         ArrayList<String> translation_text_array = new ArrayList<>();
         if (cursor.moveToFirst()) {
@@ -227,21 +227,5 @@ public class DbBackend extends DbObject {
         String[] quran_text = new String[quran_text_array.size()];
         quran_text = quran_text_array.toArray(quran_text);
         return quran_text;
-    }
-    public SurahObject getSurahById(int surahId){
-
-        SurahObject surahObject = null;
-        String query = "select * from Surah_Names where _id = " + surahId;
-        Cursor cursor = this.getDbConnection().rawQuery(query, null);
-        if(cursor.moveToFirst()){
-            do{
-                String surah_name = cursor.getString(cursor.getColumnIndexOrThrow("names"));
-                int type = cursor.getInt(cursor.getColumnIndexOrThrow("boltype"));
-                String roman = cursor.getString(cursor.getColumnIndexOrThrow("roman"));
-                surahObject = new SurahObject(surah_name, type,roman);
-            }while(cursor.moveToNext());
-        }
-        cursor.close();
-        return surahObject;
     }
 }

@@ -6,10 +6,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/portrait"
     tools:context="com.example.hp.digitalquran.SurahText">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/surahtextlist"
+        android:visibility="invisible"
+        android:padding="30dp"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="30dp"
+        android:id="@+id/surahtextscroll"
         android:paddingBottom="30dp"
         android:paddingLeft="25dp"
         android:paddingRight="25dp">
@@ -34,6 +41,33 @@
             android:textAppearance="?android:attr/textAppearanceListItemSmall"
             android:gravity="center_vertical"
             android:minHeight="?android:attr/listPreferredItemHeightSmall" />
+
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true">
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/listen"
+        android:layout_height="25dp"
+        android:background="#6a000000"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:text="LISTEN SURAH"
+        android:textColor="@color/colorBackground"
+        android:layout_marginRight="5dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/translate"
+        android:layout_height="25dp"
+        android:background="#6a000000"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:text="SHOW TRANSLATION"
+        android:textColor="@color/colorBackground"
+        android:layout_marginLeft="5dp"/>
+    </LinearLayout>
 </RelativeLayout>

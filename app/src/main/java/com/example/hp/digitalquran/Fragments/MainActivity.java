@@ -9,12 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.hp.digitalquran.AboutActivity;
+import com.example.hp.digitalquran.Menu.AboutActivity;
 import com.example.hp.digitalquran.Adapter.PagerAdapter;
-import com.example.hp.digitalquran.CreditsActivity;
+import com.example.hp.digitalquran.Menu.CreditsActivity;
 import com.example.hp.digitalquran.R;
-import com.example.hp.digitalquran.SettingActivity;
-import com.example.hp.digitalquran.SurahText;
+import com.example.hp.digitalquran.Menu.SettingActivity;
 
 
 public class MainActivity extends AppCompatActivity {

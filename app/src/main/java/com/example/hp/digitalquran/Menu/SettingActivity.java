@@ -1,15 +1,13 @@
-package com.example.hp.digitalquran;
+package com.example.hp.digitalquran.Menu;
 
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.hp.digitalquran.R;
 
 public class SettingActivity extends AppCompatActivity {
     Spinner textSize;
@@ -22,16 +20,12 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         textSize = (Spinner) findViewById(R.id.text_size);
         setting_button = (Button) findViewById(R.id.setting_btn);
-
+        MenuObject menuObject=new MenuObject();
+        menuObject.setFontSize(Finalsize);
         setting_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 size = textSize.getSelectedItem().toString().trim();
-                Toast.makeText(SettingActivity.this, "Setting Changed to " + size, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-        public void TextSize(){
                 if(size.equals("Small")){
                     Finalsize=15;
                 }else if(size.equals("Normal")){
@@ -40,6 +34,11 @@ public class SettingActivity extends AppCompatActivity {
                     Finalsize=25;
                 }else if(size.equals("Very Large")){
                     Finalsize=30;
+                }else{
+                    Finalsize=18;
+                    Toast.makeText(SettingActivity.this, "Please Select Text Size", Toast.LENGTH_SHORT).show();
                 }
-        }
+            }
+        });
+    }
 }
