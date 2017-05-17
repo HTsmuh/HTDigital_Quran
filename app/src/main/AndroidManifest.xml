@@ -29,13 +29,12 @@
             android:label="Settings"
             android:theme="@style/MyAppTheme" />
         <activity
-            android:name=".Menu.AboutActivity"
-            android:label="About"
-            android:theme="@style/MyAppTheme" />
-        <activity
             android:name=".Menu.CreditsActivity"
             android:label="Credits"
             android:theme="@style/MyAppTheme" />
+        <activity android:name=".Menu.AboutUsActivity"
+            android:label="About Us"
+            android:theme="@style/MyAppTheme"/>
     </application>
 
 </manifest>

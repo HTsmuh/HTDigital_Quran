@@ -6,9 +6,13 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,6 +32,7 @@ public class SurahText extends AppCompatActivity {
     TextView quranText;
     ImageView bismillah;
     Typeface tf;
+    ViewGroup header;
     Button translation;
     ListView SurahTextList;
     boolean isTranslate=false;
@@ -39,6 +44,9 @@ public class SurahText extends AppCompatActivity {
         setContentView(R.layout.activity_surah_text);
         translation= (Button) findViewById(R.id.translate);
         SurahTextList= (ListView) findViewById(R.id.surahtextlist);
+        LayoutInflater inflater = getLayoutInflater();
+        header = (ViewGroup)inflater.inflate(R.layout.translation_header, SurahTextList , false);
+        SurahTextList .addHeaderView(header, null, false);
         SurahTextScroll= (ScrollView) findViewById(R.id.surahtextscroll);
         RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.activity_surah_text);
         Resources res = getResources();
@@ -62,14 +70,11 @@ public class SurahText extends AppCompatActivity {
         bismillah= (ImageView) findViewById(R.id.bismillah);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        int index = bundle.getInt("Surah_Number");
+        final int index = bundle.getInt("Surah_Number");
         DbBackend db=new DbBackend(SurahText.this);
         if (index==9){
             bismillah.setVisibility(View.INVISIBLE);
         }
-
-        final MenuObject menuObject=new MenuObject();
-
         String[] text = db.Surah_Text(index);
         String finalize = Arrays.toString(text).replaceAll(",","");
         String finalize1 = finalize.replaceAll("\\[","");
@@ -89,6 +94,9 @@ public class SurahText extends AppCompatActivity {
                     SurahTextScroll.setVisibility(View.INVISIBLE);
                     SurahTextList.setVisibility(View.VISIBLE);
                     SurahTextList.setAdapter(listAdapter);
+                    if (index==9){
+                        header.findViewById(R.id.bismillah2).setVisibility(View.INVISIBLE);
+                    }
                 }else{
                     translation.setText("SHOW TRANSLATION");
                     isTranslate=false;
@@ -97,6 +105,11 @@ public class SurahText extends AppCompatActivity {
                     SurahTextList.setVisibility(View.INVISIBLE);
                 }
             }
+
+
         });
     }
+
+
+
 }

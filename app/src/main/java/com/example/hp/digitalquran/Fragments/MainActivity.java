@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.hp.digitalquran.Menu.AboutActivity;
 import com.example.hp.digitalquran.Adapter.PagerAdapter;
+import com.example.hp.digitalquran.Menu.AboutUsActivity;
 import com.example.hp.digitalquran.Menu.CreditsActivity;
 import com.example.hp.digitalquran.R;
 import com.example.hp.digitalquran.Menu.SettingActivity;
@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_about, menu);
         getMenuInflater().inflate(R.menu.menu_credits, menu);
+        getMenuInflater().inflate(R.menu.menu_about_us, menu);
         getMenuInflater().inflate(R.menu.menu_setting, menu);
         return true;
     }
@@ -68,14 +68,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingActivity.class);
-            startActivity(intent);
-        }else if (id == R.id.action_credit) {
+        if (id == R.id.action_credit) {
             Intent intent = new Intent(this, CreditsActivity.class);
             startActivity(intent);
-        }else if (id == R.id.action_about) {
-            Intent intent = new Intent(this, AboutActivity.class);
+        }else  if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
+        }else  if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutUsActivity.class);
             startActivity(intent);
         }
 
