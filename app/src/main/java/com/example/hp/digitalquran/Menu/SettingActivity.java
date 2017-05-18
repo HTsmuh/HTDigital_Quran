@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.hp.digitalquran.Fragments.MainActivity;
 import com.example.hp.digitalquran.R;
 
 public class SettingActivity extends AppCompatActivity {
@@ -18,11 +19,11 @@ public class SettingActivity extends AppCompatActivity {
     Button setting_button;
     String size;
     String mode;
-    String script;
     int Finalsize;
     String Finalmode;
-    String Finalscript;
+    String Finalscript="me_quran";
     LinearLayout layout;
+    MenuObject menuObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +37,13 @@ public class SettingActivity extends AppCompatActivity {
 
         size = textSize.getSelectedItem().toString().trim();
         mode = displayMode.getSelectedItem().toString().trim();
-        script = textScript.getSelectedItem().toString().trim();
 
+        menuObject=new MenuObject();
+        menuObject.setScript(Finalscript);
         setting_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (size.equals("Small")) {
                         Finalsize = 15;
                     } else if (size.equals("Normal")) {
@@ -53,11 +56,14 @@ public class SettingActivity extends AppCompatActivity {
                         layout.setBackgroundColor(Color.BLACK);
                     } else if (mode.equals("Night Mode")) {
                         Finalmode = "@color/colorPrimaryDark";
-                    } else if (script.equals("Me Quran")) {
-                        Finalscript = "me_quran";
-                    } else if (script.equals("PDMS Saleem")) {
+                    } else if (textScript.getSelectedItem().toString().trim().equals("Me Quran")) {
+                    Finalscript ="me_quran";
+                    menuObject.setScript(Finalscript);
+                    } else if (textScript.getSelectedItem().toString().trim().equals("PDMS Saleem")) {
                         Finalscript = "pdms";
+                    menuObject.setScript(Finalscript);
                     }
+                Toast.makeText(SettingActivity.this, ""+menuObject.getScript(), Toast.LENGTH_SHORT).show();
             }
         });
     }

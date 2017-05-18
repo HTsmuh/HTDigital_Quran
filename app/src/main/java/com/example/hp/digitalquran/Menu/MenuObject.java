@@ -1,27 +1,37 @@
 package com.example.hp.digitalquran.Menu;
 
 /**
- * Created by HP on 5/16/2017.
+ * Created by HP on 5/18/2017.
  */
 
 public class MenuObject {
-    String fontStyle;
 
-    public int getFontSize() {
-        return fontSize;
+    private int size;
+    private String mode;
+    private String script;
+
+    public int getSize() {
+        return size;
     }
 
-    public void setFontSize(int fontSize) {
-        this.fontSize = fontSize;
+    public void setSize(int size) {
+        this.size = size;
     }
 
-    int fontSize;
-
-    public String getFontStyle() {
-        return fontStyle;
+    public String getMode() {
+        return mode;
     }
 
-    public void setFontStyle(String fontStyle) {
-        this.fontStyle = fontStyle;
+    public void setMode(String mode) {
+        this.mode = mode;
     }
+
+    public String getScript() {
+        return script;
+    }
+
+    void setScript(String script) {
+        this.script = script;
+    }
+
 }

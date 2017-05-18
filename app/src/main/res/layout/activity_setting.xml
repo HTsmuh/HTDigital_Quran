@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/settingLayout"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.hp.digitalquran.Menu.SettingActivity">
@@ -11,7 +12,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="160dp"
             android:layout_height="50dp"
             android:text="Text size :"
             android:textSize="20sp"
@@ -30,7 +31,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="160dp"
             android:layout_height="50dp"
             android:text="Display Mode :"
             android:textSize="20sp"
@@ -39,6 +40,7 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/display_mode"
             android:entries="@array/display_mode"
             android:padding="10dp"/>
     </LinearLayout>
@@ -48,7 +50,7 @@
     android:orientation="horizontal"
     android:layout_marginTop="20dp">
     <TextView
-        android:layout_width="200dp"
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="Text Script :"
         android:textSize="20sp"
@@ -57,6 +59,7 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/text_script"
         android:padding="10dp"
         android:entries="@array/text_script"/>
 </LinearLayout>

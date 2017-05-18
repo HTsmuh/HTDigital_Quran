@@ -32,7 +32,7 @@
             android:layout_marginTop="5dp"
             android:src="@drawable/bismillah2"/>
             <TextView
-                android:id="@+id/quran_text"
+                android:id="@+id/para_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"

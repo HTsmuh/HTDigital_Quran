@@ -17,7 +17,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.example.hp.digitalquran.Adapter.TranslationAdapter;
 import com.example.hp.digitalquran.Database.DbBackend;
 
@@ -63,7 +62,7 @@ public class ParaText extends AppCompatActivity {
         }else{
             relativeLayout.setBackgroundDrawable(portrait);
         }
-        quranText= (TextView) findViewById(R.id.quran_text);
+        quranText= (TextView) findViewById(R.id.para_text);
         tf = Typeface.createFromAsset(getAssets(), "fonts/pdms.ttf");
         quranText.setTypeface(tf);
 

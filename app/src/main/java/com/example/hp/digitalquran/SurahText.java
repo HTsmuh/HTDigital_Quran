@@ -17,9 +17,11 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hp.digitalquran.Adapter.TranslationAdapter;
 import com.example.hp.digitalquran.Database.DbBackend;
+import com.example.hp.digitalquran.Menu.MenuObject;
 
 import java.util.Arrays;
 
@@ -35,6 +37,7 @@ public class SurahText extends AppCompatActivity {
     boolean isTranslate=false;
     TranslationAdapter listAdapter;
     ScrollView SurahTextScroll;
+    MenuObject menuObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +63,8 @@ public class SurahText extends AppCompatActivity {
         }else{
             relativeLayout.setBackgroundDrawable(portrait);
         }
-        quranText= (TextView) findViewById(R.id.quran_text);
+        quranText= (TextView) findViewById(R.id.para_text);
+
         tf = Typeface.createFromAsset(getAssets(), "fonts/pdms.ttf");
         quranText.setTypeface(tf);
 
