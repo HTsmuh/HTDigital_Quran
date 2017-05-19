@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import com.example.hp.digitalquran.Adapter.TranslationAdapter;
 import com.example.hp.digitalquran.Database.DbBackend;
-import com.example.hp.digitalquran.Menu.MenuObject;
 
 import java.util.Arrays;
 
@@ -37,7 +36,7 @@ public class SurahText extends AppCompatActivity {
     boolean isTranslate=false;
     TranslationAdapter listAdapter;
     ScrollView SurahTextScroll;
-    MenuObject menuObject;
+    DbBackend db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +71,7 @@ public class SurahText extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         index = bundle.getInt("Surah_Number");
-        DbBackend db=new DbBackend(SurahText.this);
+        db=new DbBackend(SurahText.this);
         if (index==9){
             bismillah.setVisibility(View.INVISIBLE);
         }
@@ -95,6 +94,7 @@ public class SurahText extends AppCompatActivity {
                     SurahTextScroll.setVisibility(View.INVISIBLE);
                     SurahTextList.setVisibility(View.VISIBLE);
                     SurahTextList.setAdapter(listAdapter);
+                    Toast.makeText(SurahText.this, ""+db.getMode()+""+db.getSize()+""+db.getScript(), Toast.LENGTH_SHORT).show();
                     if (index==9){
                         header.findViewById(R.id.bismillah2).setVisibility(View.INVISIBLE);
                     }

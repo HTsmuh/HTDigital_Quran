@@ -22,7 +22,7 @@ public class TranslationAdapter extends ArrayAdapter<String> {
     Typeface tf;
 
     public TranslationAdapter(Context context, String[] ayat_translation, String[] ayat_arabic) {
-        super(context, R.layout.translation_single_row,R.id.text2,ayat_arabic);
+        super(context, R.layout.translation_single_row,R.id.translationArabicText,ayat_arabic);
         this.context=context;
         this.ayat_translation_array=ayat_translation;
         this.ayat_arabic_array=ayat_arabic;
@@ -34,8 +34,8 @@ public class TranslationAdapter extends ArrayAdapter<String> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row=inflater.inflate(R.layout.translation_single_row,parent,false);
-        TextView translation= (TextView) row.findViewById(R.id.text1);
-        TextView arabic= (TextView) row.findViewById(R.id.text2);
+        TextView translation= (TextView) row.findViewById(R.id.translationUrduText);
+        TextView arabic= (TextView) row.findViewById(R.id.translationArabicText);
         arabic.setText(ayat_arabic_array[position]);
         translation.setText(ayat_translation_array[position]);
         arabic.setTypeface(tf);

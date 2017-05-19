@@ -20,10 +20,10 @@
         <activity android:name=".Fragments.MainActivity" />
         <activity
             android:name=".SurahText"
-            android:theme="@style/SplashTheme" />
+            android:theme="@style/DayMoodFullScreen" />
         <activity
             android:name=".ParaText"
-            android:theme="@style/SplashTheme" />
+            android:theme="@style/NightMoodFullScreen" />
         <activity
             android:name=".Menu.SettingActivity"
             android:label="Settings"

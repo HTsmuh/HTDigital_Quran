@@ -40,6 +40,7 @@ public class ParaText extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_para_text);
+        setTheme(R.style.DayMoodFullScreen);
         translation= (Button) findViewById(R.id.translate);
         ParaTextList= (ListView) findViewById(R.id.paratextlist);
         inflater = getLayoutInflater();

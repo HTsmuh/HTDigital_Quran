@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorAccent"
     tools:context="com.example.hp.digitalquran.SurahText">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,15 +35,15 @@
                 android:id="@+id/bismillahimage"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/bismillah2"/>
+                android:src="@drawable/bismillah_daymod"/>
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/para_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
             android:textSize="20sp"
+            android:textColor="?attr/colorPrimaryDark"
             android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceListItemSmall"
             android:gravity="center_vertical"
             android:minHeight="?android:attr/listPreferredItemHeightSmall" />
 

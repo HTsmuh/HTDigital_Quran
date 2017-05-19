@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public class DbBackend extends DbObject {
+
+    private int size;
+    private String mode;
+    private String script;
     public DbBackend(Context context) {
         super(context);
     }
@@ -254,5 +258,79 @@ public class DbBackend extends DbObject {
         String[] translation_array = new String[translation_text_array.size()];
         translation_array = translation_text_array.toArray(translation_array);
         return translation_array;
+    }
+    public int getSize() {
+        int id=1;
+        String query = "Select * from User_Setting where _id="+id;
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int text_size = cursor.getInt(cursor.getColumnIndexOrThrow("text_size"));
+                size=text_size;
+            } while (cursor.moveToNext());
+        }
+        return size;
+    }
+
+    public void setSize(int size) {
+        String query = "update User_Setting set text_size ="+size+" where _id=1";
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int text_size = cursor.getInt(cursor.getColumnIndexOrThrow("text_size"));
+                size=text_size;
+            } while (cursor.moveToNext());
+        }
+        this.size = size;
+    }
+
+    public String getMode() {
+        int id=1;
+        String query = "Select * from User_Setting where _id="+id;
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String display_mode = cursor.getString(cursor.getColumnIndexOrThrow("display_mode"));
+                mode=display_mode;
+            } while (cursor.moveToNext());
+        }
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        String query = "update User_Setting set display_mode ="+mode+" where _id=1";
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String display_mode = cursor.getString(cursor.getColumnIndexOrThrow("display_mode"));
+                mode=display_mode;
+            } while (cursor.moveToNext());
+        }
+        this.mode = mode;
+    }
+
+    public String getScript() {
+        int id=1;
+        String query = "Select * from User_Setting where _id="+id;
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String text_script = cursor.getString(cursor.getColumnIndexOrThrow("text_script"));
+                script=text_script;
+            } while (cursor.moveToNext());
+        }
+        return script;
+    }
+
+    public void setScript(String script) {
+        String query = "update User_Setting set text_script ="+script+" where _id=1";
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String text_script = cursor.getString(cursor.getColumnIndexOrThrow("text_script"));
+                script=text_script;
+            } while (cursor.moveToNext());
+        }
+        this.script = script;
     }
 }
