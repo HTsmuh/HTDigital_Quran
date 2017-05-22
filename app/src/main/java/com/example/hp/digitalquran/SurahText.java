@@ -18,15 +18,14 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.hp.digitalquran.Adapter.TranslationAdapter;
 import com.example.hp.digitalquran.Database.DbBackend;
-
 import java.util.Arrays;
 
 public class SurahText extends AppCompatActivity {
     TextView quranText;
     ImageView bismillah;
+    ImageView bismillah2;
     Typeface tf;
     ViewGroup header;
     int num;
@@ -37,12 +36,22 @@ public class SurahText extends AppCompatActivity {
     TranslationAdapter listAdapter;
     ScrollView SurahTextScroll;
     DbBackend db;
+    String[] text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        db=new DbBackend(SurahText.this);
+        if (db.getMode().equals("DayMoodFullScreen")) {
+            setTheme(R.style.DayMoodFullScreen);
+        }else {
+            setTheme(R.style.NightMoodFullScreen);
+        }
         setContentView(R.layout.activity_surah_text);
+
         translation= (Button) findViewById(R.id.translate);
         SurahTextList= (ListView) findViewById(R.id.surahtextlist);
+
         LayoutInflater inflater = getLayoutInflater();
         header = (ViewGroup)inflater.inflate(R.layout.translation_header, SurahTextList , false);
         SurahTextList .addHeaderView(header, null, false);
@@ -62,12 +71,27 @@ public class SurahText extends AppCompatActivity {
         }else{
             relativeLayout.setBackgroundDrawable(portrait);
         }
-        quranText= (TextView) findViewById(R.id.para_text);
-
-        tf = Typeface.createFromAsset(getAssets(), "fonts/pdms.ttf");
+        quranText= (TextView) findViewById(R.id.surah_text);
+        if (db.getSize().equals("Small")){
+            quranText.setTextSize(15);
+        }else if (db.getSize().equals("Normal")){
+            quranText.setTextSize(20);
+        }else if (db.getSize().equals("Large")){
+            quranText.setTextSize(25);
+        }else if (db.getSize().equals("Extra Large")){
+            quranText.setTextSize(30);
+        }
+        tf = Typeface.createFromAsset(getAssets(), "fonts/"+db.getScript()+".ttf");
         quranText.setTypeface(tf);
-
         bismillah= (ImageView) findViewById(R.id.bismillahimage);
+        bismillah2= (ImageView) findViewById(R.id.bismillah2);
+        if (db.getMode().equals("DayMoodFullScreen")) {
+            bismillah.setImageResource(R.drawable.bismillah_daymod);
+            bismillah2.setImageResource(R.drawable.bismillah_daymod);
+        }else {
+            bismillah.setImageResource(R.drawable.bismillah_nightmod);
+            bismillah2.setImageResource(R.drawable.bismillah_nightmod);
+        }
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         index = bundle.getInt("Surah_Number");
@@ -75,7 +99,11 @@ public class SurahText extends AppCompatActivity {
         if (index==9){
             bismillah.setVisibility(View.INVISIBLE);
         }
-        String[] text = db.Surah_Text(index);
+        if (db.getScript().equals("pdms")) {
+            text = db.Surah_Text_pdms(index);
+        }else {
+            text = db.Surah_Text_me_quran(index);
+        }
         String finalize = Arrays.toString(text).replaceAll(",","");
         String finalize1 = finalize.replaceAll("\\[","");
         String finalize2 = finalize1.replaceAll("\\]","");
@@ -94,7 +122,6 @@ public class SurahText extends AppCompatActivity {
                     SurahTextScroll.setVisibility(View.INVISIBLE);
                     SurahTextList.setVisibility(View.VISIBLE);
                     SurahTextList.setAdapter(listAdapter);
-                    Toast.makeText(SurahText.this, ""+db.getMode()+""+db.getSize()+""+db.getScript(), Toast.LENGTH_SHORT).show();
                     if (index==9){
                         header.findViewById(R.id.bismillah2).setVisibility(View.INVISIBLE);
                     }

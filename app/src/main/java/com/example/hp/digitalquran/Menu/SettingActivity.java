@@ -36,25 +36,29 @@ public class SettingActivity extends AppCompatActivity {
                     &&textScript.getSelectedItem().toString().trim().equals("Select Script")){
                 Toast.makeText(SettingActivity.this, "Previous Setting", Toast.LENGTH_SHORT).show();
             }else{
-
-                if (textSize.getSelectedItem().toString().trim().equals("Small")){
-                    db.setSize(15);
-                }else if (textSize.getSelectedItem().toString().trim().equals("Normal")){
-                    db.setSize(18);
-                }else if (textSize.getSelectedItem().toString().trim().equals("Large")){
-                    db.setSize(24);
-                }else if (textSize.getSelectedItem().toString().trim().equals("Extra Large")){
-                    db.setSize(28);
-                }else if (displayMode.getSelectedItem().toString().trim().equals("Day Mode")){
-                    db.setMode("Day");
-                }else if (displayMode.getSelectedItem().toString().trim().equals("Night Mode")){
-                    db.setMode("Night");
-                }else if (textScript.getSelectedItem().toString().trim().equals("Me Quran")){
+               String size=textSize.getSelectedItem().toString().trim();
+                    if(size.equals("Select Text Size")){
+                        db.setSize(db.getSize());
+                    }else{
+                        db.setSize(size);
+                    }
+               String mode=displayMode.getSelectedItem().toString().trim();
+                if (mode.equals("Select Display Mode")){
+                    db.setMode(db.getMode());
+                }else if (mode.equals("Day Mode")){
+                    db.setMode("DayMoodFullScreen");
+                }else if (mode.equals("Night Mode")){
+                    db.setMode("NightMoodFullScreen");
+                }
+               String script=textScript.getSelectedItem().toString().trim();
+                if (script.equals("Select Script")){
+                    db.setScript(db.getScript());
+                }else if (script.equals("Me Quran")){
                     db.setScript("me_quran");
-                }else if (textScript.getSelectedItem().toString().trim().equals("PDMS Saleem")){
+                }else {
                     db.setScript("pdms");
                 }
-                Toast.makeText(SettingActivity.this, "Setting Changed"+db.getSize()+" "+db.getMode()+""+db.getScript(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingActivity.this, "Setting Changed", Toast.LENGTH_SHORT).show();
             }
             }
         });

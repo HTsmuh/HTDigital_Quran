@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class DbBackend extends DbObject {
 
-    private int size;
+    private String size;
     private String mode;
     private String script;
     public DbBackend(Context context) {
@@ -147,7 +147,7 @@ public class DbBackend extends DbObject {
         return verse_total;
     }
     //Full Surah Arabic Text
-    public String[] Surah_Text(int index) {
+    public String[] Surah_Text_pdms(int index) {
         String query = "Select * from quran_text where sura="+index;
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         ArrayList<String> quran_text_array = new ArrayList<>();
@@ -157,6 +157,29 @@ public class DbBackend extends DbObject {
             do {
                 String text = cursor.getString(cursor.getColumnIndexOrThrow("text"));
                 String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_PDMS"));
+                first.add(text);
+                second.add(num);
+            } while (cursor.moveToNext());
+
+            for(int i = 0; i < first.size(); i++) {
+                quran_text_array.add(first.get(i));
+                quran_text_array.add(second.get(i));
+            }
+        }
+        cursor.close();
+        String[] quran_text = new String[quran_text_array.size()];
+        quran_text = quran_text_array.toArray(quran_text);
+        return quran_text;
+    }public String[] Surah_Text_me_quran(int index) {
+        String query = "Select * from quran_text where sura="+index;
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        ArrayList<String> quran_text_array = new ArrayList<>();
+        ArrayList<String> second = new ArrayList<>();
+        ArrayList<String> first = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                String text = cursor.getString(cursor.getColumnIndexOrThrow("text"));
+                String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_me_quran"));
                 first.add(text);
                 second.add(num);
             } while (cursor.moveToNext());
@@ -203,7 +226,7 @@ public class DbBackend extends DbObject {
         translation_array = translation_text_array.toArray(translation_array);
         return translation_array;
     }// Full Para Arabic text
-    public String[] Para_Text(int index) {
+    public String[] Para_Text_pdms(int index) {
         String query = "Select * from quran_text where para="+index;
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         ArrayList<String> quran_text_array = new ArrayList<>();
@@ -213,6 +236,29 @@ public class DbBackend extends DbObject {
             do {
                 String text = cursor.getString(cursor.getColumnIndexOrThrow("text"));
                 String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_PDMS"));
+                first.add(text);
+                second.add(num);
+            } while (cursor.moveToNext());
+
+            for(int i = 0; i < first.size(); i++) {
+                quran_text_array.add(first.get(i));
+                quran_text_array.add(second.get(i));
+            }
+        }
+        cursor.close();
+        String[] quran_text = new String[quran_text_array.size()];
+        quran_text = quran_text_array.toArray(quran_text);
+        return quran_text;
+    }public String[] Para_Text_me_quran(int index) {
+        String query = "Select * from quran_text where para="+index;
+        Cursor cursor = this.getDbConnection().rawQuery(query, null);
+        ArrayList<String> quran_text_array = new ArrayList<>();
+        ArrayList<String> second = new ArrayList<>();
+        ArrayList<String> first = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                String text = cursor.getString(cursor.getColumnIndexOrThrow("text"));
+                String num = cursor.getString(cursor.getColumnIndexOrThrow("aya_me_quran"));
                 first.add(text);
                 second.add(num);
             } while (cursor.moveToNext());
@@ -259,78 +305,60 @@ public class DbBackend extends DbObject {
         translation_array = translation_text_array.toArray(translation_array);
         return translation_array;
     }
-    public int getSize() {
-        int id=1;
-        String query = "Select * from User_Setting where _id="+id;
+    public String getSize() {
+        String query = "Select * from User_Setting where _id=1";
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                int text_size = cursor.getInt(cursor.getColumnIndexOrThrow("text_size"));
-                size=text_size;
+                size = cursor.getString(cursor.getColumnIndexOrThrow("size_value"));
+
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return size;
     }
 
-    public void setSize(int size) {
-        String query = "update User_Setting set text_size ="+size+" where _id=1";
-        Cursor cursor = this.getDbConnection().rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            do {
-                int text_size = cursor.getInt(cursor.getColumnIndexOrThrow("text_size"));
-                size=text_size;
-            } while (cursor.moveToNext());
-        }
+    public void setSize(String size) {
+        String query = "update User_Setting set size_value ='"+size+"' where _id=1";
+        db.execSQL(query);
         this.size = size;
     }
 
     public String getMode() {
-        int id=1;
-        String query = "Select * from User_Setting where _id="+id;
+        String query = "Select * from User_Setting where _id=1";
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                String display_mode = cursor.getString(cursor.getColumnIndexOrThrow("display_mode"));
-                mode=display_mode;
+                mode = cursor.getString(cursor.getColumnIndexOrThrow("display_mode"));
+
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return mode;
     }
 
     public void setMode(String mode) {
-        String query = "update User_Setting set display_mode ="+mode+" where _id=1";
-        Cursor cursor = this.getDbConnection().rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            do {
-                String display_mode = cursor.getString(cursor.getColumnIndexOrThrow("display_mode"));
-                mode=display_mode;
-            } while (cursor.moveToNext());
-        }
+        String query = "update User_Setting set display_mode='"+mode+"' where _id=1";
+        db.execSQL(query);
         this.mode = mode;
     }
 
     public String getScript() {
-        int id=1;
-        String query = "Select * from User_Setting where _id="+id;
+        String query = "Select * from User_Setting where _id=1";
         Cursor cursor = this.getDbConnection().rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do {
-                String text_script = cursor.getString(cursor.getColumnIndexOrThrow("text_script"));
-                script=text_script;
+                script = cursor.getString(cursor.getColumnIndexOrThrow("text_script"));
+
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return script;
     }
 
     public void setScript(String script) {
-        String query = "update User_Setting set text_script ="+script+" where _id=1";
-        Cursor cursor = this.getDbConnection().rawQuery(query, null);
-        if (cursor.moveToFirst()) {
-            do {
-                String text_script = cursor.getString(cursor.getColumnIndexOrThrow("text_script"));
-                script=text_script;
-            } while (cursor.moveToNext());
-        }
+        String query = "update User_Setting set text_script='"+script+"' where _id=1";
+        db.execSQL(query);
         this.script = script;
     }
 }

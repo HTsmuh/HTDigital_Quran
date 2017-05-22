@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
 import com.example.hp.digitalquran.Adapter.TranslationAdapter;
 import com.example.hp.digitalquran.Database.DbBackend;
 
@@ -27,6 +28,7 @@ public class ParaText extends AppCompatActivity {
     TextView quranText;
     Typeface tf;
     ImageView bismillah;
+    ImageView bismillah2;
     ViewGroup header;
     int num;
     int index;
@@ -36,18 +38,26 @@ public class ParaText extends AppCompatActivity {
     TranslationAdapter listAdapter;
     ScrollView ParaTextScroll;
     LayoutInflater inflater;
+    DbBackend db;
+    String[] text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db=new DbBackend(ParaText.this);
+        if (db.getMode().equals("DayMoodFullScreen")) {
+            setTheme(R.style.DayMoodFullScreen);
+        }else {
+            setTheme(R.style.NightMoodFullScreen);
+        }
         setContentView(R.layout.activity_para_text);
-        setTheme(R.style.DayMoodFullScreen);
+
         translation= (Button) findViewById(R.id.translate);
         ParaTextList= (ListView) findViewById(R.id.paratextlist);
         inflater = getLayoutInflater();
         header = (ViewGroup)inflater.inflate(R.layout.translation_header, ParaTextList , false);
         ParaTextList .addHeaderView(header, null, false);
         ParaTextScroll= (ScrollView) findViewById(R.id.paratextscroll);
-        bismillah= (ImageView) findViewById(R.id.bismillahimage);
+
         RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.activity_para_text);
         Resources res = getResources();
         Drawable portrait = res.getDrawable(R.drawable.portrait);
@@ -63,16 +73,35 @@ public class ParaText extends AppCompatActivity {
         }else{
             relativeLayout.setBackgroundDrawable(portrait);
         }
-        quranText= (TextView) findViewById(R.id.para_text);
-        tf = Typeface.createFromAsset(getAssets(), "fonts/pdms.ttf");
+        quranText= (TextView) findViewById(R.id.surah_text);
+        if (db.getSize().equals("Small")){
+            quranText.setTextSize(15);
+        }else if (db.getSize().equals("Normal")){
+            quranText.setTextSize(20);
+        }else if (db.getSize().equals("Large")){
+            quranText.setTextSize(25);
+        }else if (db.getSize().equals("Extra Large")){
+            quranText.setTextSize(30);
+        }
+        tf = Typeface.createFromAsset(getAssets(), "fonts/"+db.getScript()+".ttf");
         quranText.setTypeface(tf);
-
+        bismillah= (ImageView) findViewById(R.id.bismillahimage);
+        bismillah2= (ImageView) findViewById(R.id.bismillah2);
+        if (db.getMode().equals("DayMoodFullScreen")) {
+            bismillah.setImageResource(R.drawable.bismillah_daymod);
+            bismillah2.setImageResource(R.drawable.bismillah_daymod);
+        }else {
+            bismillah.setImageResource(R.drawable.bismillah_nightmod);
+            bismillah2.setImageResource(R.drawable.bismillah_nightmod);
+        }
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         index = bundle.getInt("Para_Number");
-        DbBackend db=new DbBackend(ParaText.this);
-
-        String[] text = db.Para_Text(index);
+            if (db.getScript().equals("pdms")){
+                text = db.Para_Text_pdms(index);
+            }else {
+                text = db.Para_Text_me_quran(index);
+            }
         String finalize = Arrays.toString(text).replaceAll(",","");
         String finalize1 = finalize.replaceAll("\\[","");
         String finalize2 = finalize1.replaceAll("\\]","");
@@ -91,9 +120,7 @@ public class ParaText extends AppCompatActivity {
                     ParaTextScroll.setVisibility(View.INVISIBLE);
                     ParaTextList.setVisibility(View.VISIBLE);
                     ParaTextList.setAdapter(listAdapter);
-                    if (index==9){
-                        header.findViewById(R.id.bismillah2).setVisibility(View.INVISIBLE);
-                    }
+
                 }else{
                     translation.setText("SHOW TRANSLATION");
                     isTranslate=false;

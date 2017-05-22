@@ -10,7 +10,7 @@ public class DbObject {
 
     public DbObject(Context context) {
         dbHelper = new MySqliteDatabase(context);
-        this.db = dbHelper.getReadableDatabase();
+        this.db = dbHelper.getWritableDatabase();
     }
 
     public SQLiteDatabase getDbConnection(){

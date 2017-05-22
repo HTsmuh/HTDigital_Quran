@@ -33,11 +33,10 @@
             android:layout_marginTop="5dp"
             android:src="@drawable/bismillah_nightmod"/>
             <TextView
-                android:id="@+id/para_text"
+                android:id="@+id/surah_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
-                android:textSize="20sp"
                 android:textColor="?attr/colorPrimaryDark"
                 android:textAlignment="center"
                 android:gravity="center_vertical"

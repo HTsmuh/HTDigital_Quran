@@ -32,9 +32,10 @@
             android:name=".Menu.CreditsActivity"
             android:label="Credits"
             android:theme="@style/MyAppTheme" />
-        <activity android:name=".Menu.AboutUsActivity"
+        <activity
+            android:name=".Menu.AboutUsActivity"
             android:label="About Us"
-            android:theme="@style/MyAppTheme"/>
+            android:theme="@style/MyAppTheme" />
     </application>
 
 </manifest>
